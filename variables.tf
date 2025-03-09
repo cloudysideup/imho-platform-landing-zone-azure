@@ -28,6 +28,18 @@ variable "firewall_subnet_cidr" {
   default     = "#{AZ_HUB_FIREWALL_SUBNET}#"
 }
 
+variable "private_dns_in_subnet_cidr" {
+  description = "CIDR for the hub vnet private DNS in subnet"
+  type        = string
+  default     = "#{AZ_HUB_PRIVATE_DNS_IN_SUBNET}#"
+}
+
+variable "private_dns_out_subnet_cidr" {
+  description = "CIDR for the hub vnet private DNS out subnet"
+  type        = string
+  default     = "#{AZ_HUB_PRIVATE_DNS_OUT_SUBNET}#"
+}
+
 variable "dns_zones" {
   description = "Private DNS zones"
   type        = list(string)
