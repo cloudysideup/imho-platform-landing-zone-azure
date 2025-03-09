@@ -47,11 +47,11 @@ module "private-law" {
   workspace_retention_in_days = var.law_retention_in_days
 }
 
-module "firewall-east-west" {
-  source           = "git@github.com:cloudysideup/modules-tf.git//azure/firewall_pfsense?ref=main"
-  count            = local.create_firewall == "true" ? 1 : 0
-  firewall_name    = module.naming.firewall.name_unique
-  firewall_region  = azurerm_resource_group.hub-net.location
-  firewall_rg_name = azurerm_resource_group.hub-net.name
-}
+#module "firewall-east-west" {
+#  source           = "git@github.com:cloudysideup/modules-tf.git//azure/firewall_pfsense?ref=main"
+#  count            = local.create_firewall == "true" ? 1 : 0
+#  firewall_name    = module.naming.firewall.name_unique
+#  firewall_region  = azurerm_resource_group.hub-net.location
+#  firewall_rg_name = azurerm_resource_group.hub-net.name
+#}
 
