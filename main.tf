@@ -32,12 +32,11 @@ module "hub-vnet" {
 }
 
 module "platform-dns" {
-  source              = "git@github.com:cloudysideup/modules-tf.git//azure/private_dns_zone?ref=main"
-  for_each            = local.dns_zones
-  pri_dns_zone_name   = module.naming.private_dns_zone.name_unique
-  pri_dns_zone_rg     = azurerm_resource_group.platform-dns.name
-  pri_dns_zone_tags   = local.platform_tags
-  private_dns_vnet_id = module.hub-vnet.vnet_id
+  source                          = "git@github.com:cloudysideup/modules-tf.git//azure/private_dns_zone?ref=main"
+  for_each                        = var.dns_zones
+  private_dns_zone_subdomain      = each.key
+  private_dns_zone_resource_group = azurerm_resource_group.platform-dns.name
+  hub_vnet_id                     = module.hub-vnet.hub_vnet_id
 }
 
 module "private-law" {

@@ -27,3 +27,9 @@ variable "firewall_subnet_cidr" {
   type        = string
   default     = "#{AZ_HUB_FIREWALL_SUBNET}#"
 }
+
+variable "dns_zones" {
+  description = "Private DNS zones"
+  type        = list(string)
+  default     = [#{AZ_PRIVATE_DNS_ZONES}#]
+}
