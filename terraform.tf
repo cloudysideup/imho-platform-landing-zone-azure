@@ -1,13 +1,13 @@
 terraform {
   cloud {
-    organization = "#{hcp.tf.org.name}#"
-    hostname     = "#{hcp.tf.hostname}#"
+    organization = "#{HCP_TF_ORG_NAME}#"
+    hostname     = "#{HCP_TF_HOSTNAME}#"
 
     workspaces {
-      project = "#{hcp.tf.project.name}#"
+      project = "#{HCP_TF_PROJECT_NAME}#"
 
       tags = {
-        layer  = "#{hcp.tf.workspace.name}#"
+        layer  = "#{HCP_TF_WORKSPACE_NAME}#"
         source = "cli"
       }
     }
