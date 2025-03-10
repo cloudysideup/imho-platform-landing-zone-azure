@@ -29,7 +29,7 @@ module "hub-vnet" {
   hub_firewall_cidr         = var.firewall_subnet_cidr
   private_dns_in_cidr       = var.private_dns_in_subnet_cidr
   private_dns_out_cidr      = var.private_dns_out_subnet_cidr
-  hub_vnet_tags             = ""
+  hub_vnet_tags             = { placeholder = "placeholder" }
 }
 
 module "platform-dns" {
