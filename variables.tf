@@ -45,3 +45,9 @@ variable "dns_zones" {
   type        = list(string)
   default     = [#{AZ_PRIVATE_DNS_ZONES}#]
 }
+
+variable "law_retention_in_days" {
+  description = "Log Analytics Workspace retention in days"
+  type        = number
+  default     = #{AZ_LAW_RETENTION_IN_DAYS}#
+}

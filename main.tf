@@ -20,7 +20,7 @@ resource "azurerm_resource_group" "platform-dns" {
 
 module "hub-vnet" {
   source                    = "git@github.com:cloudysideup/modules-tf.git//azure/virtual_network_hub?ref=main"
-  hub_vnet_name             = module.naming.vnet.name_unique
+  hub_vnet_name             = module.naming.virtual_network.name_unique
   hub_vnet_region           = azurerm_resource_group.hub-net.location
   hub_vnet_rg_name          = azurerm_resource_group.hub-net.name
   hub_vnet_cidr             = var.hub_cidr
@@ -34,7 +34,7 @@ module "hub-vnet" {
 
 module "platform-dns" {
   source                          = "git@github.com:cloudysideup/modules-tf.git//azure/private_dns_zone?ref=main"
-  for_each                        = var.dns_zones
+  for_each                        = toset(var.dns_zones)
   private_dns_zone_subdomain      = each.key
   private_dns_zone_resource_group = azurerm_resource_group.platform-dns.name
   hub_vnet_id                     = module.hub-vnet.hub_vnet_id
